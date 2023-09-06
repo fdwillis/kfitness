@@ -10,11 +10,11 @@
                 </div>
                 <div class="align-self-center">
                     <h4>Thanks For Becoming A Member</h4>
-                    <p class="line-height-s text-justify">Your membership will automatically renew on <strong><%= Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'])['lines']['data'][0]['period']['end']).to_date.strftime("%B #{Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'])['lines']['data'][0]['period']['end']).to_date.day.ordinalize}, %Y") %>.</strong> Create a password to complete your sign up.
+                    <p class="line-height-s text-justify">Your membership will automatically renew on <strong><%= Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['lines']['data'][0]['period']['end']).to_date.strftime("%B #{Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['lines']['data'][0]['period']['end']).to_date.day.ordinalize}, %Y") %>.</strong>
                     </p>
                 </div>
             </div>
-            <div class="row g-0 justify-content-center">
+            <!-- <div class="row g-0 justify-content-center">
               <% if !User.find_by(email: @stripeSession['customer_details']['email']) %>
                 <%= form_for(:setSessionVar, url: new_password_set_path) do |f| %>
                   <div class="col-xl-12 p-3">
@@ -34,7 +34,7 @@
                   </div>
                 <% end %>
               <% end %>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="card card-style">
@@ -48,21 +48,21 @@
                     <h5 class="font-600 opacity-80">Cost</h5>
                 </div>
                 <div class="col-5">
-                    <h5 class="font-600 opacity-80"><%= number_to_currency(Stripe::Invoice.retrieve(@stripeSession['invoice'])['amount_paid'] * 0.01, precision: 2)%></h5>
+                    <h5 class="font-600 opacity-80"><%= number_to_currency(Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['amount_paid'] * 0.01, precision: 2)%></h5>
                 </div>
                 <div class="divider w-100 mt-2 mb-2 divider-margins"></div>
                 <div class="col-7">
                     <h5 class="font-600 opacity-80">Interval</h5>
                 </div>
                 <div class="col-5">
-                    <h5>Every <%= Stripe::Invoice.retrieve(@stripeSession['invoice'])['lines']['data'][0]['plan']['interval'].capitalize %></h5>
+                    <h5>Every <%= Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['lines']['data'][0]['plan']['interval'].capitalize %></h5>
                 </div>
                 <div class="divider w-100 mt-2 mb-2 divider-margins"></div>
                 <div class="col-7">
                     <h5 class="font-600 opacity-80">Renewal Date</h5>
                 </div>
                 <div class="col-5">
-                    <h5><%= Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'])['lines']['data'][0]['period']['end']).to_date.strftime("%B #{Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'])['lines']['data'][0]['period']['end']).to_date.day.ordinalize}, %Y") %></h5>
+                    <h5><%= Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['lines']['data'][0]['period']['end']).to_date.strftime("%B #{Time.at(Stripe::Invoice.retrieve(@stripeSession['invoice'], {stripe_account: ENV['appStripeAccount']})['lines']['data'][0]['period']['end']).to_date.day.ordinalize}, %Y") %></h5>
                 </div>
                 <div class="divider w-100 mt-2 mb-2 divider-margins"></div>
             </div>

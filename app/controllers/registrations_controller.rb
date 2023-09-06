@@ -16,12 +16,12 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def new_password
+  def thank_you
     if request.post?
       begin
         if setSessionVarParams[:password_confirmation] == setSessionVarParams[:password]
           stripeSessionInfo = Stripe::Checkout::Session.retrieve(
-            setSessionVarParams['stripeSession']
+            setSessionVarParams['stripeSession'], {stripe_account: ENV['appStripeAccount']}
           )
           stripeCustomer = Stripe::Customer.retrieve(stripeSessionInfo['customer'])
 
@@ -82,7 +82,7 @@ class RegistrationsController < ApplicationController
       end
     else
       @stripeSession = Stripe::Checkout::Session.retrieve(
-        params['session']
+        params['session'], {stripe_account: ENV['appStripeAccount']}
       )
     end
   end

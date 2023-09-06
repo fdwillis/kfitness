@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kynetic Fitness</title>
+    <title>Kynetic Fit Club</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -25,7 +25,7 @@
     <div id="page">
 
       <div class="header header-fixed header-logo-center ">
-          <a href="/?&referredBy=<%= current_user&.present? ? current_user&.uuid : params['referredBy'] %>" class="header-title font-20 color-highlight">Kynetic Fitness</a>
+          <a href="/?&referredBy=<%= current_user&.present? ? current_user&.uuid : params['referredBy'] %>" class="header-title font-18 color-highlight">Kynetic Fit Club</a>
           <!-- <a href='javascript:history.go(-1);' data-back-button="" class="header-icon header-icon-1"><i class="fa fa-arrow-left"></i></a> -->
           <a href="#" data-menu="menu-sidebar-right-1" class="active-nav"><i class="header-icon header-icon-4 fa fa-bars font-25"></i><span></span></a>
       </div>
@@ -304,7 +304,7 @@
           </div>
         </div>
         <div class="footer card card-style">
-            <a href="#" class="mb-2 footer-title"><span class="color-highlight font-20">Kynetic Fitness</span></a>
+            <a href="#" class="mb-2 footer-title"><span class="color-highlight font-20">Kynetic Fit Club</span></a>
             <p class="footer-copyright mb-2 color-pink-light">Having Trouble? <%= mail_to "kyneticfitnesshtx@gmail.com", "EMAIL US" %></p>
             <p class="footer-links">
             </p>

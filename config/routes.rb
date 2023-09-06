@@ -30,16 +30,11 @@ Rails.application.routes.draw do
   get '/display-discount', to: 'application#display_discount', as: 'display_discount'
   get '/update-discount', to: 'application#update_discount', as: 'update_discount'
   get '/questions', to: 'application#questions', as: 'questions'
+  get '/thank-you', to: 'registrations#thank_you'
 
-  post '/signals', to: 'tradingview#signals', as: 'signals' # sprint2
   post '/inquiry', to: 'application#inquiry', as: 'inquiry' # sprint2
   post '/new-password-set', to: 'registrations#new_password'
-  post '/list', to: 'application#list'
   post '/stripe-webhooks' => 'stripe_webhooks#update', as: :stripeWebhooks
 
-  resources :blogs, path: '/blog'
-  resources :products, path: '/product'
-  resources :categories, path: '/categories'
-  resources :brands, path: '/brands'
   resources :search, path: '/search'
 end
