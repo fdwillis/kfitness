@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
 
+  get '/your-membership', to: 'application#your_membership', as: 'your-membership'
   get '/discounts', to: 'application#discounts', as: 'discounts' # sprint2
   get '/membership', to: 'application#membership', as: 'membership'
   get '/users', to: 'application#users', as: 'users'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get '/questions', to: 'application#questions', as: 'questions'
   get '/thank-you', to: 'registrations#thank_you'
 
+  post '/thank-you', to: 'registrations#thank_you'
   post '/inquiry', to: 'application#inquiry', as: 'inquiry' # sprint2
   post '/new-password-set', to: 'registrations#new_password'
   post '/stripe-webhooks' => 'stripe_webhooks#update', as: :stripeWebhooks

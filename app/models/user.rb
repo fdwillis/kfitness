@@ -359,14 +359,14 @@ class User < ApplicationRecord
   def checkMembership
     membershipValid = []
     membershipPlans = User::USERmembership + User::CAPTAINmembership + User::TRADERmembership
-    allSubscriptions = Stripe::Subscription.list({ customer: stripeCustomerID })['data'].map(&:items).map(&:data).flatten.map(&:plan).map(&:id)
+    allSubscriptions = Stripe::Subscription.list({ customer: stripeCustomerID }, {stripe_account: ENV['appStripeAccount']})['data'].map(&:items).map(&:data).flatten.map(&:plan).map(&:id)
 
     #check for payment of membership
     # when checking for addOns us addOnPaid or addOnPending
     membershipPlans.each do |planID|
       case true
       when allSubscriptions.include?(planID)
-        membershipPlan = Stripe::Subscription.list({ customer: stripeCustomerID, price: planID })['data'][0]
+        membershipPlan = Stripe::Subscription.list({ customer: stripeCustomerID, price: planID }, {stripe_account: ENV['appStripeAccount']})['data'][0]
         membershipType = if TRADERmembership.include?(planID)
                            'trader,trader'
                          elsif USERmembership.include?(planID)
@@ -390,7 +390,7 @@ class User < ApplicationRecord
 
     #logic checking for profits us profitPaid or profitPending
 
-    paymentIntents = Stripe::PaymentIntent.list({limit: 100, customer: stripeCustomerID})
+    paymentIntents = Stripe::PaymentIntent.list({limit: 100, customer: stripeCustomerID}, {stripe_account: ENV['appStripeAccount']})
 
     if paymentIntents['has_more'] == true
     else

@@ -1,0 +1,39 @@
+<div class="header-clear-medium">
+	<div class="row">
+		<% if  @stripeCustomerSubsctiptions.reject{|d| d['pause_collection']!=nil}.present? %>
+			<% @stripeCustomerSubsctiptions.reject{|d| d['pause_collection']!=nil}.each do |dataX| %>
+				<div class="pricing-4 rounded-m shadow-m bg-theme">
+				  <h1 class="pricing-title text-center bg-green-dark text-uppercase"><%= Stripe::Product.retrieve(dataX['plan']['product'])['name'] %></h1>
+				  <h3 class="pricing-value text-center bg-green-light color-white"><%= number_to_currency(dataX['plan']['amount'] * 0.01, precision: 2) %></h3>
+				  <h2 class="pricing-subtitle text-center bg-green-light">Per <%= dataX['plan']['interval'].titleize %></h2>
+				  <ul class="pricing-list text-center">
+			      <li>Demo File</li>
+	          <div class="divider mb-2 mt-1"></div>
+			      <li>Free Install</li>
+	          <div class="divider mb-2 mt-1"></div>
+			      <li>Product Guide</li>
+	          <div class="divider mb-2 mt-1"></div>
+			      <li>Lifetime Updates</li>
+				  	<% Stripe::Price.retrieve(dataX['plan']['id'])['metadata'].each do |point| %>
+	            <div class="divider mb-2 mt-1"></div>
+	            <li><%= point[0] %></li>
+
+	          <% end %>
+				  </ul>
+
+				  <% if @subscriptionList.map{|d|d[:price]}.include?(dataX['plan']['id']) %>
+					  <a href="/pause-membership/<%= dataX['id'] %>" class="btn btn-s bg-yellow-dark btn-center-l text-uppercase rounded-s font-900">Pause</a>
+					<% else %>
+					  <a href="#" class="btn btn-s bg-green-dark btn-center-l text-uppercase rounded-s font-900">Join</a>
+					<% end %>
+
+				  <p class="text-center color-gray-dark small-text font-10 uppercase mt-2 mb-0 pb-0">Your Current Plan</p>
+				</div>
+				
+			<% end %>
+		<% else %>
+			<h2 class="pricing-subtitle text-center bg-green-light">No Membership Found</h2>
+		<% end %>
+	</div>
+	<%= render 'pricing_tables', subscriptions: @subscriptionList %>
+</div>

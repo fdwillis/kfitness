@@ -73,7 +73,7 @@
              </div>
               <% if current_user %>
                 <div class="ps-2 align-self-center">
-                  <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17"><i class=" fa fa-user color-highlight rounded-sm"></i> <%= Stripe::Customer.retrieve(current_user.stripeCustomerID)['name'] %></h5>
+                  <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17"><i class=" fa fa-user color-highlight rounded-sm"></i> <%= Stripe::Customer.retrieve(current_user.stripeCustomerID, {stripe_account: ENV['appStripeAccount']})['name'] %></h5>
                   <h6 class="ps-1 mb-0 font-400 opacity-40 font-12">Thank You For Being A Member <i class=" fa fa-user color-highlight rounded-sm"></i></h6>
                 </div>
               <% else %>
@@ -206,6 +206,29 @@
             </div>
           </div>
 
+          <div class="card card-style">
+            <% if current_user %>
+              <div class=" position-sticky">
+                    <div class="content list-group list-custom-small list-icon-0">
+                      <a href="<%= destroy_user_session_path %>" class="border-0" data-confirm="Logout?">
+                        <i class="fa font-12 fa-sign-out bg-red-dark color-white rounded-sm"></i>
+                        <span>Logout</span>
+                      </a>
+                    </div>
+              </div>
+            <% else %>
+              <div class="position-sticky">
+                <div class="content list-group list-custom-small list-icon-0">
+                  <a href="<%= new_user_session_path %>?&referredBy=<%= current_user&.present? ? current_user&.uuid : params['referredBy'] %>" class="border-0">
+                    <i class="fa font-12 fa-sign-in bg-green-dark color-white rounded-sm"></i>
+                    <span>Login</span>
+                    <i class="fa fa-angle-right color-highlight-dark"></i>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
           <!-- <div class="card card-style">
             <% if current_user %>
               <div class=" position-sticky bottom-0 end-0">
@@ -282,24 +305,6 @@
             </script>
           <% end %>
           <div class="page-content">
-            <% if User.find_by(uuid: params['referredBy']).present? && User.find_by(uuid: params['referredBy'])&.stripeCustomerID %>
-              <h1 class="font-700 font-10 opacity-50 text-center mt-5 mb-n5">
-                "<%= Stripe::Customer.retrieve(User.find_by(uuid: params['referredBy'])&.stripeCustomerID)['name'].titleize %>" GOT YOU HERE</h1>
-            <% end %>
-            <% if session['coupon'].present? && Stripe::Coupon.list({limit: 100}).map(&:id).include?(session['coupon']) == true %>
-              <div class="align-self-center">
-                <h1 class="font-700 font-20 opacity-50 text-center mt-5"><%= Stripe::Coupon.retrieve(session['coupon'])['percent_off'].to_i %>% Off With Code <u><%= session['coupon'] %></u>!<br></h1>
-                <p class="mt-2 text-center mb-n5"><%= Stripe::Coupon.retrieve(session['coupon'])['times_redeemed'] %>/<%= Stripe::Coupon.retrieve(session['coupon'])['max_redemptions'] %> Claimed
-
-                <% if current_user %>
-                  <a href="<%= update_discount_path %>">Apply Coupon</a>
-                <% end %>
-                </p>
-                <p class="mt-2 text-center mb-n5">
-                  Act now, This offer will refresh every 24 hours
-                </p>
-              </div>
-            <% end %>
             <%= yield %>
           </div>
         </div>

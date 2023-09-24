@@ -1,362 +1,39 @@
-<% if current_user %>
-<% if current_user.admin? %>
-<div id="page" data-swup="0">
-  <div class="page-content header-clear-medium">
-    <div class="card card-style">
-      <div class="d-flex content mb-1">
-        <i class="fa fa-star color-highlight-dark float-end font-13 mt-2 me-3"></i>
-        <div class="flex-grow-1">
-          <h1 class="font-700"><%= @userFound.username %></h1>
-          <p class="mb-2 font-16">I'm in love software &amp; finance... I founded Oarlin.</p>
-          <p class="font-10">
-            <strong class="color-theme pe-1 font-14">1k</strong>Followers
-            <strong class="color-theme ps-3 pe-1 font-14">342</strong>Traders
-          </p>
-        </div>
-        <img src="/assets/Oarlin_free-file.jpg" data-src="/assets/Oarlin_free-file.png" width="90" height="90" class="rounded-circle mt-3 shadow-xl preload-img entered loaded" data-ll-status="loaded">
-      </div>
-      <div class="content mb-4">
-        <div class="row mb-0">
-          <div class="col-6">
-            <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-700 bg-highlight-dark">
-              TRADES
-              <p class="text-center color-white font-8">FOLLOW</p>
-            </a>
-          </div>
-          <div class="col-6">
-            <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-700 color-highlight-dark border-highlight-dark">
-              LIFESTYLE
-              <p class="text-center color-highlight font-8">FOLLOWING</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="/invite" data-menu="ad-timed-2" data-timed-ad="5" data-auto-show-ad="10" class="btn btn-l btn-full rounded-s shadow-xl text-uppercase font-900 bg-highlight me-3 ms-3 mb-4">GET INVITED</a>
-    <div class="divider mt-4 mb-0"></div>
-    <div class="content mb-0 mt-n1">
-      <div class="gallery-views gallery-view-3">
-        <div class="card card-style">
-          <div class="content">
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="Vynil and Typerwritter">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">Messy Desk?<span class="float-end"><i class="fa fa-bullhorn color-highlight"></i></span></h4>
-              <p>Some may consider this to be a very messy desk.</p>
-            </div>
-          </a>
-        </div>
-        <div class="card card-style">
-          <div class="content">
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="Fruit Cookie Pie">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">Designers Desk<span class="float-end"><i class="fa fa-bullhorn color-highlight"></i></span></h4>
-              <p>With all the gadgets you'd ever wish for.</p>
-            </div>
-          </a>
-        </div>
-        <div class="card card-style">
-          <div class="content">
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="Plain Cookies and Flour">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">Apple Watch<span class="float-end"><i class="fa fa-bullhorn color-highlight"></i></span></h4>
-              <p>The perfect and small notification device.</p>
-            </div>
-          </a>
-        </div>
-        <div class="card card-style">
-          <div class="content">
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="Pots and Stuff">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">City Landscape<span class="float-end"><i class="fa fa-bullhorn color-highlight"></i></span></h4>
-              <p>It's absolutely gorgeous, we'd love to see it live.</p>
-            </div>
-          </a>
-        </div>
-        <div class="card card-style">
-          <div class="content">
-            <p></p>
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="Delicious Strawberries">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">Typography and iP5</h4>
-              <p>A beautifully captured snap with great contrast.</p>
-            </div>
-          </a>
-        </div>
-        <div class="card card-style">
-          <div class="content">
-            <p><i class="fa fa-star color-highlight-dark font-13"></i> <%= @userFound.username %> <span class="color-highlight float-end"><%= rand(0..4) %> Days Ago</span></p>
-          </div>
-          <a data-gallery="gallery-1" title="A Beautiful Camera">
-            <img src="/assets/Oarlin_free-file.png" data-src="/assets/Oarlin_free-file.png" class="rounded-m preload-img shadow-xl img-fluid entered loaded" alt="img" data-ll-status="loaded">
-            <div class="caption content">
-              <h4 class="bottom-0 color-theme">Feather and P</h4>
-              <p>Going back to days when things were simplere.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<% else %>
 <div class="header-clear-medium">
+  <div class="row">
+    <% if  @stripeCustomerSubsctiptions.reject{|d| d['pause_collection']!=nil}.present? %>
+      <% @stripeCustomerSubsctiptions.reject{|d| d['pause_collection']!=nil}.each do |dataX| %>
+        <div class="pricing-4 rounded-m shadow-m bg-theme">
+          <h1 class="pricing-title text-center bg-green-dark text-uppercase"><%= Stripe::Product.retrieve(dataX['plan']['product'], {stripe_account: ENV['appStripeAccount']})['name'] %></h1>
+          <h3 class="pricing-value text-center bg-green-light color-white"><%= number_to_currency(dataX['plan']['amount'] * 0.01, precision: 2) %></h3>
+          <h2 class="pricing-subtitle text-center bg-green-light">Per <%= dataX['plan']['interval'].titleize %></h2>
+          <ul class="pricing-list text-center">
+            <li>Demo File</li>
+            <div class="divider mb-2 mt-1"></div>
+            <li>Free Install</li>
+            <div class="divider mb-2 mt-1"></div>
+            <li>Product Guide</li>
+            <div class="divider mb-2 mt-1"></div>
+            <li>Lifetime Updates</li>
+            <% Stripe::Price.retrieve(dataX['plan']['id'], {stripe_account: ENV['appStripeAccount']})['metadata'].each do |point| %>
+              <div class="divider mb-2 mt-1"></div>
+              <li><%= point[0] %></li>
 
-   <% if current_user == @userFound %>
-
-     <div class="d-flex content mb-1">
-       <!-- left side of profile -->
-       <div class="flex-grow-1">
-           <h1 class="font-700"><%=@profile['name'].titleize%>#<%= current_user&.uuid %></h1>
-           <p class="mb-2"><%= (@profile['metadata'].present? && @profile['metadata']['bio'].present?) ? @profile['metadata']['bio'] : nil %></p>
-           <% if @userFound&.amazonCountry.present? %>
-              <p class="font-10">
-                  <!-- <strong class="color-theme pe-1"><i class="fa fa-location-arrow"></i></strong> -->
-                  <span class="flag-icon flag-icon-<%= @userFound&.amazonCountry.downcase %> font-20"></span>
-                  <!-- <strong class="color-theme pe-1">1k</strong>Followers -->
-              </p>
             <% end %>
+          </ul>
 
-       </div>
-       <!-- right side of profile. increase image width to increase column size-->
-       <% if @profile['metadata'].present? && @profile['metadata']['profileImage'].present? %>
-         <img data-card-height="272" src="<%= @profile['metadata']['profileImage'] %>" data-src="<%= @profile['metadata']['profileImage'] %>" width="115" height="115" class="rounded-circle mt-3 shadow-xl preload-img entered loaded" data-ll-status="loaded">
-       <% end %>
-     </div>
+          <% if @subscriptionList.map{|d|d[:price]}.include?(dataX['plan']['id']) %>
+            <a href="/pause-membership/<%= dataX['id'] %>" class="btn btn-s bg-yellow-dark btn-center-l text-uppercase rounded-s font-900">Pause</a>
+          <% else %>
+            <a href="#" class="btn btn-s bg-green-dark btn-center-l text-uppercase rounded-s font-900">Join</a>
+          <% end %>
 
-      <% if @loginLink.present? %>
-         <%= link_to "Dashboard", @loginLink['url'], class: 'btn btn-full btn-m font-900 text-uppercase rounded-sm bg-green-dark form-control', 'target' => '_blank' %><br>
-      <% end %>
-      <% if @userFound.trader? %>
-            <a href="<%= cancel_path %>" class='p-2'>
-              <%= button_tag( :class => "btn btn-full btn-m font-900 text-uppercase rounded-sm bg-yellow-dark form-control") do %>
-                <i class="fa fa-pause font-20 color-white"></i> Pause Membership
-              <% end %>
-            </a>
-    <% end %>
-
-      
-
-      <% if @accountItemsDue.present? && @accountItemsDue.count > 0 %>
-         <div class="content row">
-           <a href="<%= @stripeAccountUpdate['url'] %>" class='p-2'>
-           <%= button_tag( :class => 'btn btn-full btn-m font-900 text-uppercase rounded-sm bg-green-dark form-control') do %>
-             <i class="fa fa-check-circle font-20 color-white"></i> COMPLETE COMMISSION ACCOUNT
-           <% end %>
-         </a>
-       </div>
-      <% end %>
-     
-   <% if @userFound.trader? %>
-      <div class="card card-style">
-          <div class="content">
-              <h3 class="mb-0">Your Next Steps</h3>
-              <p>Follow these steps to set up auto trading with Oarlin</p>
-                <ul class="content">
-                  
-                  <div class="col-12">
-                      <li><h5 class="font-600 opacity-80">Add the broker keys to your Oarlin <%= link_to "Profile", new_user_session_path %></h5></li>
-                  </div>
-                  <div class="divider w-100 mt-2 mb-2 divider-margins"></div>
-                </ul>
-          </div>
-      </div>
-
-      <% if current_user.trader? || current_user.trial? %>
-         <div class="card card-style">
-          <div class="content">
-              <h3 class="mb-0">Your Auto Trading List</h3>
-              <p>Type the asset pairs you want your account to auto trade</p>
-                <div class="content">
-                  <%= form_for :authorizedList, url: manage_trading_keys_path do |form| %>
-                     <%= form.label "Authorized Trading List (Separate By Comma)" %><br />
-                     <% if current_user.trial? %>
-                              <%= form.text_field :authorizedList, value: current_user&.authorizedList == 'crypto' ? "BTC#{ISO3166::Country[current_user.amazonCountry.downcase].currency_code}" : current_user&.authorizedList == 'forex' ? "EUR#{ISO3166::Country[current_user.amazonCountry.downcase].currency_code}" : nil , class: 'form-control form-control-lg form-control-alt py-3', readonly: true, disabled: true %><br />
-                              Want to change your asset? <%= mail_to "kyneticfitnesshtx@gmail.com", "EMAIL US" %>
-                     <% else %>
-                              <%= form.text_field :authorizedList, value: current_user&.authorizedList, class: 'form-control form-control-lg form-control-alt py-3' %><br />
-                     <% end %>
-                     <%= form.label "Username" %><br />
-                     <%= form.text_field :username, value: current_user&.username, class: 'form-control form-control-lg form-control-alt py-3', required: true %><br />
-                     <%= form.submit "Save List",class: "form-control btn btn-full btn-m rounded-m bg-highlight font-700 text-uppercase mb-4 mt-4" %>
-                  <% end %>
-                </div>
-          </div>
-         </div>
-
-         <div class="card card-style">
-          <div class="content">
-              <h3 class="mb-0">Risk Tolerance &amp; Profit Triggers</h3>
-              <p>Decide how much to risk &amp; when to exit.<br>All numbers are represented as percentages</p>
-                <div class="content">
-                  <%= form_for :profitTriggers, url: manage_trading_keys_path do |form| %>
-
-                     <%= form.label "Percentage to risk per entry" %><br />
-                     <%= form.text_field :perEntry, value: current_user&.perEntry, class: 'form-control form-control-lg form-control-alt py-3' %>
-                     
-                     <%= form.label "Percentage to reduce positions by" %><br />
-                              <%= form.text_field :reduceBy, value: current_user&.reduceBy, class: 'form-control form-control-lg form-control-alt py-3' %>
-                     
-                     <%= form.label "Profit Trigger" %><br />
-                              <%= form.text_field :profitTrigger, value: current_user&.profitTrigger, class: 'form-control form-control-lg form-control-alt py-3' %>
-                     
-                     <%= form.label "Max total risk" %><br />
-                              <%= form.text_field :maxRisk, value: current_user&.maxRisk, class: 'form-control form-control-lg form-control-alt py-3' %>
-                     
-                     <%= form.label "Do you want to allow market orders? (true or false)" %><br />
-                              <%= form.select :allowMarketOrder, ['true', 'false'], selected: current_user&.allowMarketOrder, class: 'form-control form-control-lg form-control-alt py-3' %>
-                                          
-                     <%= form.submit "Save Risk & Triggers",class: "form-control btn btn-full btn-m rounded-m bg-highlight font-700 text-uppercase mb-4 mt-4" %>
-                  <% end %>
-                </div>
-          </div>
-         </div>
-      <% end %>
-         <div class="card card-style">
-          <div class="content mb-0">
-            <div class="row">
-                  <h3 class="font-700 font-22 opacity-50 text-center mt-4">Manage Autotrading Keys</h3>
-                  <h5 class="font-700 font-12 opacity-50 mb-4 text-center">
-                     Your Webhook: <%= "https://app.oarlin.com/signals?&traderID=#{current_user&.uuid}" %>
-                  </h5>
-                  <p class="font-700 font-12 opacity-50 mb-4 text-center">Need Help Finding Keys? <%= mail_to "team@oarlin.com", "EMAIL US" %></p>
-                  <%= form_for :editKeys, url: manage_trading_keys_path do |f| %>
-                     <%= f.label "Oanda Live API Key" %><br />
-                     <%= f.text_field :oandaToken, value: current_user&.oandaToken, class: 'form-control form-control-lg form-control-alt py-3' %><br />
-                     <%= f.label "Oanda Account List (Separate By Comma)" %><br />
-                     <%= f.text_field :oandaList, value: current_user&.oandaList, class: 'form-control form-control-lg form-control-alt py-3' %><br />
-                    <div class="divider w-100 mt-2 mb-2 divider-margins"></div>
-                     <%= f.submit "Save Keys",class: "form-control btn btn-full btn-m rounded-m bg-highlight font-700 text-uppercase mb-4 mt-4" %>
-                <% end %>
-             </div>
-          </div>
+          <p class="text-center color-gray-dark small-text font-10 uppercase mt-2 mb-0 pb-0">Your Current Plan</p>
         </div>
-    <% end %>
-   <% end %>
-   <div class="card card-style">
-    <!-- follow buttons-->
-    <% unless current_user == @userFound %>
-      <div class="content mb-0">
-         <div class="row">
-              <div class="col-12">
-                <a href="#">
-                       <%= button_tag( :class => "btn btn-full btn-m rounded-s text-uppercase font-700 color-highlight-dark border-highlight-dark form-control", 'data-menu'=>"flag-country-explained") do %>
-                         <i class="fa fa-amazon color-highlight"></i>
-                       <% end %>
-                     </a>
-              </div>
-
-         </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-
-
-<div id="flag-country-explained" class="menu menu-box-modal rounded-m" data-menu-width="330" style="display: block; width: 330px;">
-  <div class="content">
-    <div class="text-center">
-      <span class="font-40 icon icon-xxl fa fa-amazon"></span>
-    </div>
-    <h5 class="text-center">This Icon Means There Are Amazon Affiliate Links Present</a>
-    </h5>
-    <small class="pb-4">This Page Contains Amazon Affiliate Links That Will Earn That Affiliate Commission If Purchased. We Automate This Process For All Amazon Associates &amp; Pay Commission On Oarlin Memberships As Well (Available In USA)</small>
-  </div>
-</div>
-
-<div id="follow-profile-and-cache" class="menu menu-box-modal rounded-m" data-menu-width="330" style="display: block; width: 330px;">
-  <div class="content">
-    <div class="text-center">
-      <span class="font-40 icon icon-xxl fa fa-comments"></span>
-    </div>
-    <h5 class="text-center">Get Notified when <%= @profile['name'] %> updates their list</a>
-    </h5>
-    <small class="pb-4">This Page Contains Amazon Affiliate Links That Will Earn That Affiliate Commission If Purchased. We Automate This Process For All Amazon Associates &amp; Pay Commission On Oarlin Memberships As Well (Available In USA)</small>
-  </div>
-</div>
-<div id="flag-country-explained" class="menu menu-box-modal rounded-m" data-menu-width="330" style="display: block; width: 330px;">
-  <div class="content">
-    <div class="text-center">
-      <span class="font-40 icon icon-xxl fa fa-amazon"></span>
-    </div>
-    <h5 class="text-center">This Icon Means There Are Amazon Affiliate Links Present</a>
-    </h5>
-    <small class="pb-4">This Page Contains Amazon Affiliate Links That Will Earn That Affiliate Commission If Purchased. We Automate This Process For All Amazon Associates &amp; Pay Commission On Oarlin Memberships As Well (Available In USA)</small>
-  </div>
-</div>
-<div id="follow-profile-and-cache" class="menu menu-box-modal rounded-m" data-menu-width="330" style="display: block; width: 330px;">
-  <div class="content">
-    <div class="text-center">
-      <span class="font-40 icon icon-xxl fa fa-comments"></span>
-    </div>
-    <h5 class="text-center">Get Notified when <%= @profile['name'] %> updates their list</a>
-    </h5>
-    <small class="pb-4">This Page Contains Amazon Affiliate Links That Will Earn That Affiliate Commission If Purchased. We Automate This Process For All Amazon Associates &amp; Pay Commission On Oarlin Memberships As Well (Available In USA)</small>
-  </div>
-</div>
-<% end %>
-<% else %>
-<% end %>
-<!-- ad spaces -->
-<div id="ad-timed-3" class="menu menu-box-modal menu-box-modal-full" style="display: block;">
-  <div class="card bg-17" style="height:100vh; width:100vw;">
-    <div class="card-top">
-      <a href="#" class="close-menu ad-time-close color-highlight"><i class="fa fa-times"></i><span style="display: none;">0</span></a>
-    </div>
-    <div class="card-top no-click">
-      <span class="color-white bg-black font-10 opacity-70 pb-1 pt-1 ps-2 pe-2 ms-1">Sponsored Content</span>
-    </div>
-    <div class="card-center ms-5 me-5">
-      <h1 class="color-white text-center mb-3 font-40">Automatic Show</h1>
-      <%= form_for(:newInquiry, url: inquiry_path) do |f| %>
-      <div class="col-xl-12 p-3">
-        <div class="field">
-          <%= f.label "Email" %><br />
-          <%= f.email_field :email, class: "form-control form-control-lg form-control-alt py-3", placeholder: 'Email', required: true %>
-          <%= f.label "Phone" %><br />
-          <%= f.text_field :phone, class: "form-control form-control-lg form-control-alt py-3", placeholder: 'Phone Number', required: true, maxlength: 10 %>
-        </div>
-        <br>
-        <%= f.submit "Contact Me", class: "form-control btn btn-full btn-m rounded-m bg-blue-dark font-700 text-uppercase mb-4 mt-4" %>
-      </div>
+        
       <% end %>
-      <p class="color-white text-center opacity-50 mt-n1 mb-0">This ad apears on it's own, and can only be closed after 5 seconds. In the demo, you can use the red close button, in real life, you can remove that button.</p>
-      <a href="#" class="close-menu me-3 ms-3 mt-5 btn btn-m btn-full rounded-s shadow-xl text-uppercase font-900 bg-red-dark">Demo Close Button</a>
-    </div>
-    <div class="card-overlay bg-black opacity-90"></div>
+    <% else %>
+      <h2 class="pricing-subtitle text-center bg-green-light">No Membership Found</h2>
+    <% end %>
   </div>
-</div>
-<div id="ad-timed-2" class="menu menu-box-modal menu-box-modal-full" style="display: block;">
-  <div class="card m-0 bg-17" style="height:100vh; width:100vw;">
-    <div class="card-top">
-      <a href="#" class="close-menu ad-time-close color-highlight"><i class="fa fa-times"></i><span style="display: none;">0</span></a>
-    </div>
-    <div class="card-top no-click">
-      <span class="color-white bg-black font-10 opacity-70 pb-1 pt-1 ps-2 pe-2 ms-1">Sponsored Content</span>
-    </div>
-    <div class="card-center ms-5 me-5">
-      <h1 class="color-white text-center mb-3 font-40">Full Ad</h1>
-      <p class="color-white text-center opacity-50 mt-n1 mb-0">Timed ads show for the amount of time you want. During this time, users cannot click the close button. After the time has elapsed, the ad can be closed.</p>
-      <a href="#" class="close-menu me-3 ms-3 mt-5 btn btn-m btn-full rounded-s shadow-xl text-uppercase font-900 bg-red-dark">Demo Close Button</a>
-    </div>
-    <div class="card-overlay bg-black opacity-90"></div>
-  </div>
+  <%= render 'pricing_tables', subscriptions: @subscriptionList %>
 </div>

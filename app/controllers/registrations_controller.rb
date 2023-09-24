@@ -23,51 +23,20 @@ class RegistrationsController < ApplicationController
           stripeSessionInfo = Stripe::Checkout::Session.retrieve(
             setSessionVarParams['stripeSession'], {stripe_account: ENV['appStripeAccount']}
           )
-          stripeCustomer = Stripe::Customer.retrieve(stripeSessionInfo['customer'])
+          stripeCustomer = Stripe::Customer.retrieve(stripeSessionInfo['customer'], {stripe_account: ENV['appStripeAccount']})
 
-          loadedAffililate = User.find_by(uuid: setSessionVarParams['referredBy'])
-
-          stripePlan = Stripe::Subscription.list({ customer: stripeSessionInfo['customer'] })['data'][0]['items']['data'][0]['plan']['id']
-
-          if cardNew.present? && cardHolderNew.present?
-            customerUpdated = Stripe::Customer.update(
-              stripeSessionInfo['customer'], {
-                metadata: {
-                  connectAccount: newStripeAccount['id'],
-                  cardHolder: cardHolderNew['id'],
-                  issuedCard: cardNew['id'],
-                  referredBy: setSessionVarParams['referredBy'].present? ? setSessionVarParams['referredBy'] : ','
-                }.merge(commissionRate)
-              }
-            )
-
-          else
-            customerUpdated = Stripe::Customer.update(
-              stripeSessionInfo['customer'], {
-                metadata: {
-                  connectAccount: newStripeAccount['id'],
-                  # recipientAccount: recipientAccount['id'],
-                  referredBy: setSessionVarParams['referredBy'].present? ? setSessionVarParams['referredBy'] : ','
-                }.merge(commissionRate)
-              }
-            )
-          end
           # make user with password passed
 
           loadedCustomer = User.create(
-            referredBy: setSessionVarParams['referredBy'].present? ? setSessionVarParams['referredBy'] : ',',
             email: stripeCustomer['email'],
             password: setSessionVarParams['password'],
-            amazonCountry: stripeSessionInfo['custom_fields'][1]['dropdown']['value'],
-            amazonUUID: setSessionVarParams['amazonUUID'],
-            accessPin: setSessionVarParams['accessPin'],
             stripeCustomerID: stripeSessionInfo['customer'],
             uuid: SecureRandom.uuid[0..7]
           )
 
           flash[:success] = 'Your Account Setup Is Complete!'
 
-          redirect_to new_password_path
+          redirect_to "/thank-you?session=#{setSessionVarParams['stripeSession']}"
         else
           flash[:alert] = 'Password Must Match'
           redirect_to request.referrer

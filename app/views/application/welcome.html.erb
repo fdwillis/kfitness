@@ -38,24 +38,24 @@
    <h1 class="color-highlight text-uppercase font-700 mb-1">Workout Plans</h1>
    <h1 class="color-highlight text-uppercase font-700 mb-1 font-16">Paid Monthly</h1>
   <% if request.user_agent.include?('Mobile') %> 
-          <a href="/checkout/<%= ENV['indivOne'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">1X Week</a>
-          <a href="/checkout/<%= ENV['indivTwo'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">2X Week</a>
-          <a href="/checkout/<%= ENV['indivThree'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">3X Week</a>
-          <a href="/checkout/<%= ENV['indivFour'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">4X Week</a>
+          <a href="/checkout/<%= ENV['oneTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">1X Week</a>
+          <a href="/checkout/<%= ENV['twoTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">2X Week</a>
+          <a href="/checkout/<%= ENV['threeTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">3X Week</a>
+          <a href="/checkout/<%= ENV['fourTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">4X Week</a>
   <% else %>  
 
     <div class="row">
        <div class="col-3">
-          <a href="/checkout/<%= ENV['indivOne'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">1X Week</a>
+          <a href="/checkout/<%= ENV['oneTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">1X Week</a>
        </div>
        <div class="col-3">
-          <a href="/checkout/<%= ENV['indivTwo'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">2X Week</a>
+          <a href="/checkout/<%= ENV['twoTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">2X Week</a>
        </div>
        <div class="col-3">
-          <a href="/checkout/<%= ENV['indivThree'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">3X Week</a>
+          <a href="/checkout/<%= ENV['threeTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">3X Week</a>
        </div>
        <div class="col-3">
-          <a href="/checkout/<%= ENV['indivFour'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">4X Week</a>
+          <a href="/checkout/<%= ENV['fourTime'] %>/<%= ENV['appStripeAccount'] %>" class="btn btn-full btn-sm rounded-sm font-10 text-uppercase font-700 mt-3 bg-highlight">4X Week</a>
        </div>
     </div>
   <% end %>
