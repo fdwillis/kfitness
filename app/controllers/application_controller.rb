@@ -1,5 +1,24 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, only: %i[loved list your_membership]
+  before_action :authenticate_user!, only: %i[loved list your_membership pause_membership]
+
+  def resume_membership
+    Stripe::Subscription.update(
+      params['id'],
+      {
+        pause_collection: ''
+      }, {stripe_account: ENV['appStripeAccount']})
+
+    flash[:success] = 'Subscription Resumed'
+    redirect_to request.referrer
+  end
+
+  def pause_membership
+    # only pause of ID passed
+    Stripe::Subscription.update(params['id'], {pause_collection: {behavior: 'void' }}, {stripe_account: ENV['appStripeAccount']})
+
+    flash[:success] = 'Subscription Paused'
+    redirect_to request.referrer
+  end
 
   def your_membership
     @subscriptionList = []
@@ -29,7 +48,10 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['oneTime'], quantity: 1 }
       ],
-      mode: 'subscription'
+      mode: 'subscription',
+      subscription_data: {
+        application_fee_percent: 10
+      },
     }, {stripe_account: ENV['appStripeAccount']})
     
     @oneTimePrice = Stripe::Price.retrieve(ENV['oneTime'], {stripe_account: ENV['appStripeAccount']})
@@ -44,7 +66,10 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['twoTime'], quantity: 1 }
       ],
-      mode: 'subscription'
+      mode: 'subscription',
+      subscription_data: {
+        application_fee_percent: 10
+      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @twoTimePrice = Stripe::Price.retrieve(ENV['twoTime'], {stripe_account: ENV['appStripeAccount']})
@@ -59,7 +84,10 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['threeTime'], quantity: 1 }
       ],
-      mode: 'subscription'
+      mode: 'subscription',
+      subscription_data: {
+        application_fee_percent: 10
+      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @threeTimePrice = Stripe::Price.retrieve(ENV['threeTime'], {stripe_account: ENV['appStripeAccount']})
@@ -74,7 +102,10 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['fourTime'], quantity: 1 }
       ],
-      mode: 'subscription'
+      mode: 'subscription',
+      subscription_data: {
+        application_fee_percent: 10
+      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @fourTimePrice = Stripe::Price.retrieve(ENV['fourTime'], {stripe_account: ENV['appStripeAccount']})

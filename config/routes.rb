@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
-
+  get '/resume-membership/:id', to: 'application#resume_membership'
   get '/your-membership', to: 'application#your_membership', as: 'your-membership'
   get '/discounts', to: 'application#discounts', as: 'discounts' # sprint2
   get '/membership', to: 'application#membership', as: 'membership'
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/analytics', to: 'application#analytics', as: 'analytics'
   get '/profile/:id', to: 'application#profile', as: 'profile'
   get '/welcome', to: 'application#welcome', as: 'welcome'
+  get '/pause-membership/:id', to: 'application#pause_membership'
   get '/new-password-set', to: 'registrations#new_password', as: 'new-password-set'
   get '/checkout/:price/:account', to: 'application#checkout'
   get '/checkout/:price', to: 'application#checkout'

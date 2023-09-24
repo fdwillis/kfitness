@@ -196,7 +196,7 @@
 			  <% if current_user %>
 				  <% if subscriptions.map{|d|d[:price]}.include?(@fourTimePrice['id']) %>
 					  <% subscriptions.each do |subscX| %>
-					  	<% if subscX[:price] == @threeTimePrice['id'] %>
+					  	<% if subscX[:price] == @fourTimePrice['id'] %>
 					  		<% if subscX[:active] == true && subscX[:price]%>
 								  <p class="text-center color-gray-dark small-text font-10 uppercase mt-2 mb-0 pb-0">Your Current Plan</p>
 					  		<% else %>
