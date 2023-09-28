@@ -48,6 +48,9 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['oneTime'], quantity: 1 }
       ],
+      subscription_data: {
+        application_fee_percent: 10
+      },
       mode: 'subscription',
     }, {stripe_account: ENV['appStripeAccount']})
     
@@ -63,6 +66,9 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['twoTime'], quantity: 1 }
       ],
+      subscription_data: {
+        application_fee_percent: 10
+      },
       mode: 'subscription',
     }, {stripe_account: ENV['appStripeAccount']})
 
@@ -78,6 +84,9 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['threeTime'], quantity: 1 }
       ],
+      subscription_data: {
+        application_fee_percent: 10
+      },
       mode: 'subscription',
     }, {stripe_account: ENV['appStripeAccount']})
 
@@ -93,6 +102,9 @@ class ApplicationController < ActionController::Base
       line_items: [
        { price: ENV['fourTime'], quantity: 1 }
       ],
+      subscription_data: {
+        application_fee_percent: 10
+      },
       mode: 'subscription',
     }, {stripe_account: ENV['appStripeAccount']})
 
@@ -274,8 +286,9 @@ class ApplicationController < ActionController::Base
 
   def checkout
     begin
+
       if params['price'] == ENV['thursdayClass'] || params['price'] == ENV['sundayClass']
-        
+
         @session = Stripe::Checkout::Session.create({
                                                     success_url: "https://kyneticfitclub.com/thank-you?session={CHECKOUT_SESSION_ID}",
                                                     phone_number_collection: {
@@ -285,6 +298,9 @@ class ApplicationController < ActionController::Base
                                                     line_items: [
                                                       { price: params['price'], quantity: 1 }
                                                     ],
+                                                    subscription_data: {
+                                                      application_fee_percent: 10
+                                                    },
                                                     mode: 'payment'
                                                   }, {stripe_account: ENV['appStripeAccount']})
       else
@@ -297,6 +313,9 @@ class ApplicationController < ActionController::Base
                                                     line_items: [
                                                       { price: params['price'], quantity: 1 }
                                                     ],
+                                                    subscription_data: {
+                                                      application_fee_percent: 10
+                                                    },
                                                     mode: 'subscription'
                                                   }, {stripe_account: ENV['appStripeAccount']})
       end
