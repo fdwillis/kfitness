@@ -154,26 +154,46 @@
           
           <div class="card card-style">
             <div class="content my-0">
+              <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Classes</h5>
+                <div class="list-group list-custom-small list-icon-0">
+
+
+                  <a href="/checkout/<%= ENV['sundayClass'] %>">
+                    <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
+                    <span>Self Care Sunday</span>
+                    <i class="fa fa-angle-right color-highlight-dark"></i>
+                  </a>
+                  <a href="/checkout/<%= ENV['thursdayClass'] %>">
+                    <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
+                    <span>Get Thick Thursday</span>
+                    <i class="fa fa-angle-right color-highlight-dark"></i>
+                  </a>
+                </div>
+            </div>
+          </div>
+
+          <div class="card card-style">
+            <div class="content my-0">
               <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Workout Plans</h5>
                 <div class="list-group list-custom-small list-icon-0">
 
 
-                  <a href="#">
+                  <a href="/checkout/<%= ENV['oneTime'] %>">
                     <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
                     <span>1X Week</span>
                     <i class="fa fa-angle-right color-highlight-dark"></i>
                   </a>
-                  <a href="#">
+                  <a href="/checkout/<%= ENV['twoTime'] %>">
                     <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
                     <span>2X Week</span>
                     <i class="fa fa-angle-right color-highlight-dark"></i>
                   </a>
-                  <a href="#">
+                  <a href="/checkout/<%= ENV['threeTime'] %>">
                     <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
                     <span>3X Week</span>
                     <i class="fa fa-angle-right color-highlight-dark"></i>
                   </a>
-                  <a href="#">
+                  <a href="/checkout/<%= ENV['fourTime'] %>">
                     <i class="fa font-12 fa-check bg-highlight-dark rounded-sm color-white"></i>
                     <span>4X Week</span>
                     <i class="fa fa-angle-right color-highlight-dark"></i>
@@ -181,6 +201,7 @@
                 </div>
             </div>
           </div>
+
           <div class="card card-style">
             <div class="content my-0">
               <h5 class="font-700 text-uppercase opacity-40 font-12 pt-2 mb-0">Follow Us</h5>

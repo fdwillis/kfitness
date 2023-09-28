@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       @subscriptionList << {active: subInfo['pause_collection'].nil? ? true : false, price: subInfo['items']['data'].map(&:price).map(&:id).first, subscription: subInfo['id']}
     end
 
-    successURL = "https://kyneticfitclub.com/new-password-set?session={CHECKOUT_SESSION_ID}"
+    successURL = "https://kyneticfitclub.com/thank-you?session={CHECKOUT_SESSION_ID}"
     customFields = [{
       key: 'type',
       label: { custom: 'Include Membership Card ($5)', type: 'custom' },
@@ -49,9 +49,6 @@ class ApplicationController < ActionController::Base
        { price: ENV['oneTime'], quantity: 1 }
       ],
       mode: 'subscription',
-      subscription_data: {
-        application_fee_percent: 10
-      },
     }, {stripe_account: ENV['appStripeAccount']})
     
     @oneTimePrice = Stripe::Price.retrieve(ENV['oneTime'], {stripe_account: ENV['appStripeAccount']})
@@ -67,9 +64,6 @@ class ApplicationController < ActionController::Base
        { price: ENV['twoTime'], quantity: 1 }
       ],
       mode: 'subscription',
-      subscription_data: {
-        application_fee_percent: 10
-      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @twoTimePrice = Stripe::Price.retrieve(ENV['twoTime'], {stripe_account: ENV['appStripeAccount']})
@@ -85,9 +79,6 @@ class ApplicationController < ActionController::Base
        { price: ENV['threeTime'], quantity: 1 }
       ],
       mode: 'subscription',
-      subscription_data: {
-        application_fee_percent: 10
-      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @threeTimePrice = Stripe::Price.retrieve(ENV['threeTime'], {stripe_account: ENV['appStripeAccount']})
@@ -103,9 +94,6 @@ class ApplicationController < ActionController::Base
        { price: ENV['fourTime'], quantity: 1 }
       ],
       mode: 'subscription',
-      subscription_data: {
-        application_fee_percent: 10
-      },
     }, {stripe_account: ENV['appStripeAccount']})
 
     @fourTimePrice = Stripe::Price.retrieve(ENV['fourTime'], {stripe_account: ENV['appStripeAccount']})
@@ -286,20 +274,32 @@ class ApplicationController < ActionController::Base
 
   def checkout
     begin
-      @session = Stripe::Checkout::Session.create({
+      if params['price'] == ENV['thursdayClass'] || params['price'] == ENV['sundayClass']
+        
+        @session = Stripe::Checkout::Session.create({
                                                     success_url: "https://kyneticfitclub.com/thank-you?session={CHECKOUT_SESSION_ID}",
                                                     phone_number_collection: {
                                                       enabled: true
                                                     },
-                                                    subscription_data: {
-                                                      application_fee_percent: 10
+                                                    customer: current_user.present? ? current_user&.stripeCustomerID : nil,
+                                                    line_items: [
+                                                      { price: params['price'], quantity: 1 }
+                                                    ],
+                                                    mode: 'payment'
+                                                  }, {stripe_account: ENV['appStripeAccount']})
+      else
+        @session = Stripe::Checkout::Session.create({
+                                                    success_url: "https://kyneticfitclub.com/thank-you?session={CHECKOUT_SESSION_ID}",
+                                                    phone_number_collection: {
+                                                      enabled: true
                                                     },
+                                                    customer: current_user.present? ? current_user&.stripeCustomerID : nil,
                                                     line_items: [
                                                       { price: params['price'], quantity: 1 }
                                                     ],
                                                     mode: 'subscription'
                                                   }, {stripe_account: ENV['appStripeAccount']})
-      
+      end
       
       redirect_to @session['url']
     rescue Stripe::StripeError => e

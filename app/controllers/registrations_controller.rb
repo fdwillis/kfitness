@@ -53,6 +53,7 @@ class RegistrationsController < ApplicationController
       @stripeSession = Stripe::Checkout::Session.retrieve(
         params['session'], {stripe_account: ENV['appStripeAccount']}
       )
+      
     end
   end
 
